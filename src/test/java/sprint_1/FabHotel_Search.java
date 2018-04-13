@@ -14,8 +14,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.CapabilityType;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -214,22 +212,22 @@ public class FabHotel_Search {
 	@BeforeTest(alwaysRun = true)
 	@Parameters("BROWSER")
 	public void BrowserSetup(String BROWSER) throws Exception {
-		Proxy p = new Proxy();
-		// p.setHttpProxy("127.0.0.1:8088");
+		/*Proxy p = new Proxy();
+		p.setHttpProxy("127.0.0.1:8088");
 		p.setProxyType(Proxy.ProxyType.DIRECT);
 		DesiredCapabilities cap = new DesiredCapabilities();
-		cap.setCapability(CapabilityType.PROXY, p);
+		cap.setCapability(CapabilityType.PROXY, p);*/
 		if (BROWSER.equalsIgnoreCase("firefox")) {
 			String fabDriverPathFirefox = "C:\\Users\\rajesh.kumar41\\eclipse-workspace\\fabHotel\\lib\\";
 			System.setProperty("webdriver.gecko.driver", fabDriverPathFirefox+"geckodriver.exe");			
-			fabDriver = new FirefoxDriver(cap);
+			fabDriver = new FirefoxDriver();
 			fabDriver.manage().window().maximize();
 			fabDriver.get(testURL);
 			System.out.println("Opening Firefox Browser...");
 		} else if (BROWSER.equalsIgnoreCase("chrome")) {
 			String fabDriverPathChrome = "C:\\Users\\rajesh.kumar41\\eclipse-workspace\\fabHotel\\lib\\";
 			System.setProperty("webdriver.chrome.driver", fabDriverPathChrome+"chromedriver.exe");
-			fabDriver = new ChromeDriver(cap);
+			fabDriver = new ChromeDriver();
 			fabDriver.manage().window().maximize();
 			fabDriver.get(testURL);
 			System.out.println("Opening Chrome Browser...");
